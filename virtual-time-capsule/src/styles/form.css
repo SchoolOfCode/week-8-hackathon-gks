@@ -1,12 +1,17 @@
-/* src/styles/form.css */
 .form-container {
   display: flex;
   flex-direction: column;
   width: 300px;
   margin: 20px auto;
+  text-align: center;
 }
 
 .form-container input {
+  margin: 5px 0;
+  padding: 10px;
+}
+
+.form-container textarea {
   margin: 5px 0;
   padding: 10px;
 }
@@ -36,6 +41,14 @@ button:hover {
 }
 
 .capsule-item img {
-  max-width: 100px;
+  max-width: 100%;
   height: auto;
+}
+
+label {
+  display: inline-flex;
+  margin-top: 10px;
+  font-weight: bold;
+  text-align: left;
+  padding: 3px;
 }

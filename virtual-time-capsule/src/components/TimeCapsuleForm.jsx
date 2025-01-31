@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import "../styles/form.css";
 
 const TimeCapsuleForm = ({ onAddCapsule }) => {
@@ -6,20 +7,18 @@ const TimeCapsuleForm = ({ onAddCapsule }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [imageFile, setImageFile] = useState(null);
-  const [id, setDateSubmitted] = useState("");
 
   // handle file input change
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
-      console.log("---selected file", file);
       setImageFile(file);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formattedDate = new Date(Date.now()).toLocaleDateString("en-GB");
+    const formattedDate = new Date(Date.now()).toLocaleDateString("en-GB"); // converts date.now into a human readabale format
     const newCapsule = {
       id: formattedDate,
       userName,
@@ -33,7 +32,6 @@ const TimeCapsuleForm = ({ onAddCapsule }) => {
     setTitle("");
     setContent("");
     setImageFile(null);
-    setDateSubmitted("");
   };
 
   return (
@@ -59,7 +57,7 @@ const TimeCapsuleForm = ({ onAddCapsule }) => {
       <div>
         <textarea
           value={content}
-          placeholder="Content"
+          placeholder="Memory"
           onChange={(e) => setContent(e.target.value)}
           required
         />
@@ -77,21 +75,12 @@ const TimeCapsuleForm = ({ onAddCapsule }) => {
         <div>
           <p>Image Preview:</p>
           <img
-            src={URL.createObjectURL(imageFile)} // Create a URL for preview
+            src={URL.createObjectURL(imageFile)} // creates url for preview
             alt="Preview"
             style={{ width: "100px", height: "auto", marginTop: "10px" }}
           />
         </div>
       )}
-      <div>
-        <label>Date Submitted: </label>
-        <input
-          type="date"
-          value={id}
-          onChange={(e) => setDateSubmitted(e.target.value)}
-          required
-        />
-      </div>
       <button type="submit">Add Memory</button>
     </form>
   );

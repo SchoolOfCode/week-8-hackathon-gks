@@ -1,25 +1,26 @@
 import React from "react";
 import "../styles/item.css";
 
-function TimeCapsuleItem({ capsule }) {
+function TimeCapsuleItem({ capsule, onClick }) {
   return (
-    <div className="capsule-card">
-      <h2>
-        {capsule.title} - {capsule.userName}
-      </h2>
-      <img src={capsule.imageUrl} />
-      <p>{capsule.content}</p>
-      <p>Date Submitted: {capsule.id}</p>
-      {capsule.imageFile && (
-        <div>
-          <img
-            src={URL.createObjectURL(capsule.imageFile)} // Generate the preview URL for the uploaded image
-            alt="Capsule Image"
-            style={{ width: "100px", height: "auto" }}
-          />
-        </div>
-      )}
-    </div>
+    <label>
+      <div className="capsule-card" onClick={() => onClick(capsule)}>
+        <h2>
+          {capsule.title} - {capsule.userName}
+        </h2>
+        {capsule.imageFile && (
+          <div>
+            <img
+              src={URL.createObjectURL(capsule.imageFile)}
+              alt="Capsule Image"
+            />
+          </div>
+        )}
+        <img src={capsule.imageUrl} />
+        <p>{capsule.content}</p>
+        <p>Date Submitted: {capsule.dateSubmitted}</p>
+      </div>
+    </label>
   );
 }
 

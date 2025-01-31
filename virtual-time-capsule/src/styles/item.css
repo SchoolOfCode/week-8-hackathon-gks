@@ -1,22 +1,54 @@
-.capsule-card {
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  margin-bottom: 10px;
+.capsule-card-container {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important; /* Centers cards */
+  gap: 20px; /* Adds spacing between cards */
+  padding: 20px;
 }
 
+/* Card Styling */
+.capsule-card {
+  width: 350px; /* Set a fixed width */
+  max-height: 500px;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for a stylish feel */
+.capsule-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Image Styling */
 .capsule-card img {
-  width: 100%;
-  max-height: 400px;
-  object-fit: fill;
-  margin-top: 10px;
+  max-width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
 }
 
 .capsule-card h2 {
-  font-size: 18px;
-  margin-bottom: 5px;
+  font-size: 20px;
+  color: #ddd;
+  margin-bottom: 8px;
+  font-weight: 600;
 }
 
 .capsule-card p {
   font-size: 14px;
+  color: #ddd;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .capsule-card {
+    width: 90%; /* Adjust width for smaller screens */
+  }
 }
